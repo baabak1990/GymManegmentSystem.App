@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{4B033E7F-DA7C-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9DF6854F-2D8F-4CEB-A340-AF0439EB8E5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManegmentSystemDomin", "GymManegmentSystemDomin\GymManegmentSystemDomin.csproj", "{94DE96DF-D506-4F48-B02F-17063693EB9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymManegmentSystemDomin", "GymManegmentSystemDomin\GymManegmentSystemDomin.csproj", "{94DE96DF-D506-4F48-B02F-17063693EB9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManegmentSystem.UI", "GymManegmentSystem.UI\GymManegmentSystem.UI.csproj", "{E7B42846-0EAC-40AA-A64A-0AB098178A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymManegmentSystem.UI", "GymManegmentSystem.UI\GymManegmentSystem.UI.csproj", "{E7B42846-0EAC-40AA-A64A-0AB098178A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManegmentApplication", "GymManegmentApplication\GymManegmentApplication.csproj", "{DEBFEED4-0CFA-4C06-AD8A-D218B1C7E708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E7B42846-0EAC-40AA-A64A-0AB098178A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7B42846-0EAC-40AA-A64A-0AB098178A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7B42846-0EAC-40AA-A64A-0AB098178A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBFEED4-0CFA-4C06-AD8A-D218B1C7E708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBFEED4-0CFA-4C06-AD8A-D218B1C7E708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBFEED4-0CFA-4C06-AD8A-D218B1C7E708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBFEED4-0CFA-4C06-AD8A-D218B1C7E708}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{9DF6854F-2D8F-4CEB-A340-AF0439EB8E5B} = {FFF7F4B8-6B2B-4C57-8840-A4756C6FBAA5}
 		{94DE96DF-D506-4F48-B02F-17063693EB9C} = {9DF6854F-2D8F-4CEB-A340-AF0439EB8E5B}
 		{E7B42846-0EAC-40AA-A64A-0AB098178A36} = {4B033E7F-DA7C-4C4B-860D-9BB33697D0AD}
+		{DEBFEED4-0CFA-4C06-AD8A-D218B1C7E708} = {9DF6854F-2D8F-4CEB-A340-AF0439EB8E5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {203DB678-C4F0-413F-A738-58446E0D0A8F}

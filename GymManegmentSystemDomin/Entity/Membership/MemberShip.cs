@@ -7,16 +7,16 @@ using GymManegmentSystemDomin.Common;
 
 namespace GymManegmentSystemDomin.Entity.Membership
 {
-    public class MemberShip:BaseEntity
+    public class MemberShip : BaseEntity
     {
         public MembershipType Name { get; set; }
         public int Duration { get; set; }
         public double Price { get; set; }
 
-        
+
+
         #region Relation
 
-        public MemberShipDetails MemberShipDetails { get; set; }
 
         #endregion relation
 
