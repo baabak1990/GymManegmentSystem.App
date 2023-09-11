@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,23 +7,41 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GymManegmentSystem.UI.styles.css" asp-append-version="true" />
-    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: black
+        }
+
+        .backgorund1 {
+            background-image: url("img\\GymFirst.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 50vw;
+            height: 50vh;
+            align-content: flex-end;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: black">
     
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 align-content-center">
             <div class="container-fluid ">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" style="margin-right: 50%;" asp-action="Index" >مدیریت باشگاه</a>
-               
+                <a class="navbar-brand" asp-area="UserManegment" asp-controller="UserManeger" style="margin-right: 50%;text-align: right;color: aliceblue" asp-action="Index">مدیریت باشگاه</a>
+
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+
+
+    
+  
+    @RenderBody()
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

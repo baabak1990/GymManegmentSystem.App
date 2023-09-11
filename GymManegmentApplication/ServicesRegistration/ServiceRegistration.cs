@@ -10,9 +10,10 @@ namespace GymManegmentApplication.ServicesRegistration
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection Services(this IServiceCollection services)
+        public static IServiceCollection ApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
             return services;
         }
     }

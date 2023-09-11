@@ -1,8 +1,41 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div style="background-image: inherit;position:center">
+@* <div style="background-image: inherit;position:center">
     <img src="img/GymFirst.jpg" style="max-width: 100%;" />
-</div>
+</div> *@
+<style>
+    *{
+        background-color: black
+    }
+</style>
+<div class="container" style="background-color: black">
+    <div class="row">
+        <div class="col-2">
+            <br/>
+            
+            <form style="margin: 200px 0px;">
+                <div class="col-12 " style="margin-bottom: 1%">
+                    <div>
+                        <input placeholder="UserName" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-12" style="margin-bottom: 1%">
+                  <div>
+                      <input placeholder="Password" class="form-control" />
+                  </div>
+              </div>
+                <button style="margin-bottom: 1%" class=" btn btn-lg btn-success">ورود</button>
+            </form>
+        </div>
+     
+        <div class="col-10">
+            <div >
+                <img src="img/GymFirst.jpg" style="max-width: 100%;max-height: 80%"/>
+                <br />
+            </div>
+        </div>
+    </div>
 
+</div>
 
