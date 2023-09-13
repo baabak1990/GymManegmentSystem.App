@@ -8,21 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
-    <Folder Include="Features\Handler\Command\Membership\" />
-    <Folder Include="Features\Handler\Command\Member\" />
-    <Folder Include="Features\Handler\Command\" />
-    <Folder Include="Features\Handler\Query\Membership\" />
-    <Folder Include="Features\Handler\Query\Member\" />
-    <Folder Include="Features\Request\Command\Member\" />
-    <Folder Include="Features\Request\Command\Membership\" />
-    <Folder Include="Features\Request\Command\" />
-    <Folder Include="Features\Request\Query\Membership\" />
-    <Folder Include="Features\Request\Query\Member\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
   </ItemGroup>
 
   <ItemGroup>
