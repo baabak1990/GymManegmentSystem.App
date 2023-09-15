@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GymManegmentApplication.DTOs.MemberDTOs;
+using GymManegmentApplication.DTOs.MemberShipDTOs;
 using MediatR;
 
 namespace GymManegmentApplication.Features.Membership.Request.Command
 {
     public class CreateMembershipRequest:IRequest<int>
     {
-        public CreateMemberDto DTO { get; set; }
+        public CreateMembershipDTO DTO { get; set; }
     }
 }

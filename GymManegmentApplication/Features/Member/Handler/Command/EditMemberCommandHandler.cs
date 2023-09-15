@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using GymManegmentApplication.Contracts.Presistance;
+using GymManegmentApplication.DTOs.MemberDTOs.Validation;
 using GymManegmentApplication.Features.Member.Request.Command;
 using MediatR;
 
@@ -23,6 +24,11 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
 
         public async Task<Unit> Handle(EditMemberCommand request, CancellationToken cancellationToken)
         {
+            var validation = new EditMemberValidation(_memberRepository);
+            var validator = await validation.ValidateAsync(request.EditMemberDto);
+            if (validator.IsValid == false) throw new Exception("");
+
+
             var member = await _memberRepository.Get(request.EditMemberDto.Id);
             if (member == null) throw new Exception("Something wrong !!! please Try again");
             _mapper.Map(request.EditMemberDto, member);

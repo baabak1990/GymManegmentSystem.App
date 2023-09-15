@@ -8,7 +8,7 @@ public interface IMemberDto
     public string LastName { get; set; }
     public DateTime BirthDate { get; set; }
     public string MobileNumber { get; set; }
-    public MembershipDto MembershipDtos { get; set; }
+    public int MembershipDto_Id { get; set; }
     public bool IsValid { get; set; }
     public bool IsPresent { get; set; }
 }
