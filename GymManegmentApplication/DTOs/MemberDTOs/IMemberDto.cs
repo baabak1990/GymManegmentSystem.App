@@ -10,4 +10,5 @@ public interface IMemberDto
     public string MobileNumber { get; set; }
     public MembershipDto MembershipDtos { get; set; }
     public bool IsValid { get; set; }
+    public bool IsPresent { get; set; }
 }

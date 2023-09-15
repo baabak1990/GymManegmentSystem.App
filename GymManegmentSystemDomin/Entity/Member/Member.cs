@@ -16,6 +16,7 @@ namespace GymManegmentSystemDomin.Entity.Member
         public DateTime BirthDate { get; set; }
         public string MobileNumber { get; set; }
         public bool IsValid { get; set; }
+        public bool IsPresent { get; set; }
 
         #region Relation
         [ForeignKey(nameof(MemberShip))]
