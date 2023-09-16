@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 using AutoMapper;
 using GymManegmentApplication.Contracts.Presistance;
 using GymManegmentApplication.DTOs.MemberDTOs.Validation;
+using GymManegmentApplication.Exceptions;
 using GymManegmentApplication.Features.Member.Request.Command;
+using GymManegmentApplication.Response;
 using Humanizer;
 using MediatR;
 
 namespace GymManegmentApplication.Features.Member.Handler.Command
 {
-    public class CreatememberCommandHandler : IRequestHandler<CreatememberCommand, int>
+    public class CreateMemberCommandHandler : IRequestHandler<CreatememberCommand, int>
     {
         private readonly IMemberRepository _memberRepository;
         private readonly IMapper _mapper;
 
-        public CreatememberCommandHandler(IMemberRepository memberRepository, IMapper mapper)
+        public CreateMemberCommandHandler(IMemberRepository memberRepository, IMapper mapper)
         {
             _memberRepository = memberRepository;
             _mapper = mapper;
@@ -25,20 +27,33 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
 
         public async Task<int> Handle(CreatememberCommand request, CancellationToken cancellationToken)
         {
+            var response = new BaseCommonResponse();
+
             var validation = new CreateMemberValidation(_memberRepository);
             var validator = await validation.ValidateAsync(request.CreateMemberDto);
-            if (validator.IsValid == false) throw new Exception("");
 
-
-
-            var memebr = _mapper.Map<GymManegmentSystemDomin.Entity.Member.Member>(request.CreateMemberDto);
-            memebr = await _memberRepository.Add(memebr);
-            if (memebr==null)
+            if (validator.IsValid == false)
             {
-                throw new Exception("Something went wrong !!! Please Try again !!!");
+                response.IsSuccess = false;
+                response.Message = "Creation Filed";
+                response.Errors=validator.Errors.Select(q=>q.ErrorMessage).ToList();
             }
 
-            return memebr.Id;
+           
+
+            var member = _mapper.Map<GymManegmentSystemDomin.Entity.Member.Member>(request.CreateMemberDto);
+            member = await _memberRepository.Add(member);
+
+
+            if (member==null)
+            {
+                response.IsSuccess=false;
+                response.Message = "Something Is Wrong in Creation Process";
+                throw new BadRequestException(response.Message);
+            }
+
+
+            return member.Id;
         }
     }
 }
