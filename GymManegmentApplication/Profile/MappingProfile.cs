@@ -22,6 +22,7 @@ namespace GymManegmentApplication.Profile
 
 
             #endregion
+
             #region Member
 
             CreateMap<Member, CreateMemberDto>().ReverseMap();
