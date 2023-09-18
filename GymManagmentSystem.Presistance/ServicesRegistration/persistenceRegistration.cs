@@ -12,15 +12,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GymManagmentSystem.Presistance.ServicesRegistration
 {
-    public static class PresistanceRegistration
+    public static class persistenceRegistration
     {
-        public static IServiceCollection PresistanceServiceCollection(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection persistenceServiceCollection(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddDbContext<GymManagementDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString(""));
             });
 
+            //Using Dependency injection To inject our Repositories 
             services.AddScoped( typeof(IGenericRepository<>),typeof(GenericRepository<>));
 
             services.AddScoped<IMemberRepository, MemberRepository>();

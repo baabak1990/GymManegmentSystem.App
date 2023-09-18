@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using GymManegmentApplication.Contracts.Infrastructures;
 using GymManegmentApplication.Contracts.Presistance;
 using GymManegmentApplication.DTOs.MemberDTOs.Validation;
 using GymManegmentApplication.Exceptions;
 using GymManegmentApplication.Features.Member.Request.Command;
+using GymManegmentApplication.Model;
 using GymManegmentApplication.Response;
 using MediatR;
 
@@ -15,14 +17,20 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
 {
     public class EditMemberCommandHandler : IRequestHandler<EditMemberCommand, BaseCommonResponse>
     {
+        #region Constructor
+
         private readonly IMemberRepository _memberRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
 
-        public EditMemberCommandHandler(IMemberRepository memberRepository, IMapper mapper)
+        public EditMemberCommandHandler(IMemberRepository memberRepository, IMapper mapper, IEmailSender emailSender)
         {
             _memberRepository = memberRepository;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
+
+        #endregion
 
         public async Task<BaseCommonResponse> Handle(EditMemberCommand request, CancellationToken cancellationToken)
         {
@@ -46,6 +54,15 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
             response.IsSuccess = true;
             response.Message = "Edited Successfully";
             response.Id=request.EditMemberDto.Id;
+            //Sending email or SMS For client 
+            var email = new Email()
+            {
+                To = "Sample@gmail.com",
+                Body = $"Dear {request.EditMemberDto.FirstName} {request.EditMemberDto.LastName} " +
+                       $"Your account recharged  successfully . Your new membership started from {DateTime.Now} ",
+                Subject = "You Are Registered successfully !!!"
+            };
+
             return response;
         }
     }
