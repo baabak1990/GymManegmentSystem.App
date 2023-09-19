@@ -18,7 +18,7 @@ namespace GymManagmentSystem.Presistance.ServicesRegistration
         {
             services.AddDbContext<GymManagementDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString(""));
+                options.UseSqlServer(configuration.GetConnectionString("GymManagementSystemDb"));
             });
 
             //Using Dependency injection To inject our Repositories 

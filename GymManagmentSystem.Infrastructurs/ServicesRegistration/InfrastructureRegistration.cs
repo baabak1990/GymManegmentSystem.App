@@ -13,7 +13,7 @@ namespace GymManagmentSystem.Infrastructurs.ServicesRegistration
 {
     public static class InfrastructureRegistration
     {
-        public static IServiceCollection RegisterServiceCollection(IServiceCollection service,IConfiguration configuration)
+        public static IServiceCollection RegisterServiceCollection(this IServiceCollection service,IConfiguration configuration)
         {
             service.Configure<EmailSetting>(configuration.GetSection("EmailSettings"));
             service.AddTransient<IEmailSender, EmailSender>();
