@@ -1,7 +1,15 @@
+using GymManegmentSystem.UI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+#region HttpClient
+
+builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44331"));
+
+#endregion
 
 var app = builder.Build();
 

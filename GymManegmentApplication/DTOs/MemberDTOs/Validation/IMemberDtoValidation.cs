@@ -37,7 +37,7 @@ namespace GymManegmentApplication.DTOs.MemberDTOs.Validation
                 .Matches("(\\+98|0)?9\\d{9}$");
 
 
-            RuleFor(m => m.MembershipDto_Id)
+            RuleFor(m => m.Membership_Id)
                 .GreaterThan(0)
                 .MustAsync(async (id, token) =>
                     {
