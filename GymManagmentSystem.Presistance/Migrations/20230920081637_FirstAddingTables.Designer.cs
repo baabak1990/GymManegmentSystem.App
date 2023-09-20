@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagmentSystem.Presistance.Migrations
 {
     [DbContext(typeof(GymManagementDbContext))]
-    [Migration("20230919160437_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20230920081637_FirstAddingTables")]
+    partial class FirstAddingTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,6 +68,32 @@ namespace GymManagmentSystem.Presistance.Migrations
                     b.HasIndex("memberShip_Id");
 
                     b.ToTable("Members");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1983),
+                            CreateDate = new DateTime(2023, 9, 20, 11, 46, 37, 15, DateTimeKind.Local).AddTicks(4159),
+                            FirstName = "Baabak",
+                            IsPresent = true,
+                            IsValid = true,
+                            LastName = "Aghaei",
+                            MobileNumber = "09125595423",
+                            memberShip_Id = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1983),
+                            CreateDate = new DateTime(2023, 9, 20, 11, 46, 37, 15, DateTimeKind.Local).AddTicks(4168),
+                            FirstName = "Leila",
+                            IsPresent = true,
+                            IsValid = true,
+                            LastName = "Aghaei",
+                            MobileNumber = "09125595281",
+                            memberShip_Id = 2
+                        });
                 });
 
             modelBuilder.Entity("GymManegmentSystemDomin.Entity.Membership.MemberShip", b =>
@@ -96,6 +122,40 @@ namespace GymManagmentSystem.Presistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MemberShips");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 46, 37, 15, DateTimeKind.Local).AddTicks(4236),
+                            Duration = 12,
+                            Name = 2,
+                            Price = 25000.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 46, 37, 15, DateTimeKind.Local).AddTicks(4239),
+                            Duration = 15,
+                            Name = 1,
+                            Price = 30000.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 46, 37, 15, DateTimeKind.Local).AddTicks(4240),
+                            Duration = 20,
+                            Name = 0,
+                            Price = 35000.0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 46, 37, 15, DateTimeKind.Local).AddTicks(4240),
+                            Duration = 1,
+                            Name = 3,
+                            Price = 1000.0
+                        });
                 });
 
             modelBuilder.Entity("GymManegmentSystemDomin.Entity.Member.Member", b =>

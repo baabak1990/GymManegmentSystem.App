@@ -65,6 +65,32 @@ namespace GymManagmentSystem.Presistance.Migrations
                     b.HasIndex("memberShip_Id");
 
                     b.ToTable("Members");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(2000, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreateDate = new DateTime(2023, 9, 20, 11, 48, 39, 732, DateTimeKind.Local).AddTicks(2417),
+                            FirstName = "Baabak",
+                            IsPresent = true,
+                            IsValid = true,
+                            LastName = "Aghaei",
+                            MobileNumber = "09125595423",
+                            memberShip_Id = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthDate = new DateTime(1990, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreateDate = new DateTime(2023, 9, 20, 11, 48, 39, 732, DateTimeKind.Local).AddTicks(2432),
+                            FirstName = "Leila",
+                            IsPresent = true,
+                            IsValid = true,
+                            LastName = "Aghaei",
+                            MobileNumber = "09125595281",
+                            memberShip_Id = 2
+                        });
                 });
 
             modelBuilder.Entity("GymManegmentSystemDomin.Entity.Membership.MemberShip", b =>
@@ -93,6 +119,40 @@ namespace GymManagmentSystem.Presistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MemberShips");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 48, 39, 732, DateTimeKind.Local).AddTicks(2500),
+                            Duration = 12,
+                            Name = 2,
+                            Price = 25000.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 48, 39, 732, DateTimeKind.Local).AddTicks(2503),
+                            Duration = 15,
+                            Name = 1,
+                            Price = 30000.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 48, 39, 732, DateTimeKind.Local).AddTicks(2504),
+                            Duration = 20,
+                            Name = 0,
+                            Price = 35000.0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreateDate = new DateTime(2023, 9, 20, 11, 48, 39, 732, DateTimeKind.Local).AddTicks(2505),
+                            Duration = 1,
+                            Name = 3,
+                            Price = 1000.0
+                        });
                 });
 
             modelBuilder.Entity("GymManegmentSystemDomin.Entity.Member.Member", b =>
