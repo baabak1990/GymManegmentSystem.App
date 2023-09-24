@@ -1,4 +1,7 @@
+using System.Reflection;
+using GymManegmentSystem.UI.Contracts;
 using GymManegmentSystem.UI.Services;
+using GymManegmentSystem.UI.Services.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,8 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 #region HttpClient
-
+//Using NSwage To Generate These Two Interface and class 
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44331"));
+
+#endregion
+
+#region IoC
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+//It is better To Use Local Services As A SingleTone
+builder.Services.AddSingleton<ILocalStorageServices, LocalStorageServices>();
 
 #endregion
 
