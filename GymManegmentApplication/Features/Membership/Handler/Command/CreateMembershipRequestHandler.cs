@@ -37,18 +37,16 @@ namespace GymManegmentApplication.Features.Membership.Handler.Command
                 response.Message = "Some Validation Error Please Try Again";
                 response.Errors = validator.Errors.Select(q => q.ErrorMessage).ToList();
             }
-
-
-            var membership = _mapper.Map<MemberShip>(request.DTO);
-
-            membership = await _membershipRepository.Add(membership);
-
-            response.IsSuccess = true;
-            response.Message = "Creation Successfully Done !!";
-            response.Id = membership.Id;
-
-            
+            else
+            {
+                var membership = _mapper.Map<MemberShip>(request.DTO);
+                membership = await _membershipRepository.Add(membership);
+                response.IsSuccess = true;
+                response.Message = "Creation Successfully Done !!";
+                response.Id = membership.Id;
+            }
             return response;
+
         }
     }
 }

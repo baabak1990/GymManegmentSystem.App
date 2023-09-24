@@ -24,19 +24,20 @@ namespace GymManegmentApplication.Features.Membership.Handler.Command
         }
         public async Task<BaseCommonResponse> Handle(DeleteMembershipCommand request, CancellationToken cancellationToken)
         {
-            var response=new BaseCommonResponse();
+            var response = new BaseCommonResponse();
             var membership = await _membershipRepository.Get(request.Id);
             if (membership == null)
             {
-                response.IsSuccess=false;
+                response.IsSuccess = false;
                 response.Message = "Can not find this Membership";
                 throw new NotFoundException($"{response.Message}", request.Id);
             }
-
-            await _membershipRepository.Delete(membership);
-
-            response.IsSuccess=true;
-            response.Message = "Object Deleted Successfully";
+            else
+            {
+                await _membershipRepository.Delete(membership);
+                response.IsSuccess = true;
+                response.Message = "Object Deleted Successfully";
+            }
             return response;
         }
     }

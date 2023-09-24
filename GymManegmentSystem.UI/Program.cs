@@ -13,7 +13,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44331"));
 
 #endregion
-
 #region IoC
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());

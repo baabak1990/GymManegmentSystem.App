@@ -31,26 +31,25 @@ namespace GymManegmentApplication.Features.Membership.Handler.Command
             var validator = await validation.ValidateAsync(request.EditMemberShipDTo);
             if (validator.IsValid == false)
             {
-                response.IsSuccess=false;
-                response.Message = "Some validation Failed";
-                response.Errors=validator.Errors.Select(q=>q.ErrorMessage).ToList();
-            }
-
-
-            var membership = await _membershipRepository.Get(request.EditMemberShipDTo.Id);
-            if (membership == null)
-            {
                 response.IsSuccess = false;
                 response.Message = "Some validation Failed";
-                throw new NotFoundException(nameof(membership), request.EditMemberShipDTo.Id);
+                response.Errors = validator.Errors.Select(q => q.ErrorMessage).ToList();
             }
-
-
-            _mapper.Map(request.EditMemberShipDTo, membership);
-            await _membershipRepository.Update(membership);
-            response.IsSuccess = true;
-            response.Message = "Edit Complete";
-            response.Id=request.EditMemberShipDTo.Id;
+            else
+            {
+                var membership = await _membershipRepository.Get(request.EditMemberShipDTo.Id);
+                if (membership == null)
+                {
+                    response.IsSuccess = false;
+                    response.Message = "Some validation Failed";
+                    throw new NotFoundException(nameof(membership), request.EditMemberShipDTo.Id);
+                }
+                _mapper.Map(request.EditMemberShipDTo, membership);
+                await _membershipRepository.Update(membership);
+                response.IsSuccess = true;
+                response.Message = "Edit Complete";
+                response.Id = request.EditMemberShipDTo.Id;
+            }
             return response;
         }
     }

@@ -16,7 +16,7 @@ using MediatR;
 
 namespace GymManegmentApplication.Features.Member.Handler.Command
 {
-    public class CreateMemberCommandHandler : IRequestHandler<CreatememberCommand, int>
+    public class CreateMemberCommandHandler : IRequestHandler<CreatememberCommand, BaseCommonResponse>
     {
         #region Constructor
 
@@ -33,12 +33,12 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
 
         #endregion
 
-        public async Task<int> Handle(CreatememberCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommonResponse> Handle(CreatememberCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommonResponse();
-
             var validation = new CreateMemberValidation(_memberRepository);
             var validator = await validation.ValidateAsync(request.CreateMemberDto);
+
 
             if (validator.IsValid == false)
             {
@@ -46,22 +46,24 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
                 response.Message = "Creation Filed";
                 response.Errors = validator.Errors.Select(q => q.ErrorMessage).ToList();
             }
-
-
-
-            var member = _mapper.Map<GymManegmentSystemDomin.Entity.Member.Member>(request.CreateMemberDto);
-            member = await _memberRepository.Add(member);
-
-            //Sending email or SMS For client 
-            var email = new Email()
+            else
             {
-                To = "Sample@gmail.com",
-                Body = $"Dear {request.CreateMemberDto.FirstName} {request.CreateMemberDto.LastName} " +
-                        $"Your are registered successfully . Your membership started from {DateTime.Now} ",
-                Subject = "You Are Registered successfully !!!"
-            };
+                var member = _mapper.Map<GymManegmentSystemDomin.Entity.Member.Member>(request.CreateMemberDto);
+                member = await _memberRepository.Add(member);
+                //Sending email or SMS For client 
+                var email = new Email()
+                {
+                    To = "Sample@gmail.com",
+                    Body = $"Dear {request.CreateMemberDto.FirstName} {request.CreateMemberDto.LastName} " +
+                           $"Your are registered successfully . Your membership started from {DateTime.Now} ",
+                    Subject = "You Are Registered successfully !!!"
+                };
+                response.Id = member.Id;
+                response.Message = "member Created Successfully";
+                response.IsSuccess = true;
+            }
+            return response;
 
-            return member.Id;
         }
     }
 }

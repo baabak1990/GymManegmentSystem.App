@@ -2,6 +2,7 @@
 using GymManegmentApplication.Features.Member.Request.Command;
 using GymManegmentApplication.Features.Member.Request.Query;
 using GymManegmentApplication.Features.Membership.Request.Command;
+using GymManegmentApplication.Response;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,7 +44,7 @@ namespace GymManagementAPI.App.Controllers
         // POST api/<MemberController>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<int>> Createmember([FromBody] CreateMemberDto createMemberDto)
+        public async Task<ActionResult<BaseCommonResponse>> CreateMember([FromBody] CreateMemberDto createMemberDto)
         {
             var command = new CreatememberCommand{CreateMemberDto = createMemberDto};
             var response=await _mediator.Send(command);
@@ -54,7 +55,7 @@ namespace GymManagementAPI.App.Controllers
         // PUT api/<MemberController>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> editMember( [FromBody] EditMemberDto editMemberDto)
+        public async Task<ActionResult<BaseCommonResponse>> editMember( [FromBody] EditMemberDto editMemberDto)
         {
             var command = new EditMemberCommand { EditMemberDto = editMemberDto};
             var response= await _mediator.Send(command);
@@ -64,7 +65,7 @@ namespace GymManagementAPI.App.Controllers
         // DELETE api/<MemberController>/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult<BaseCommonResponse>> Delete(int id)
         {
             var command=new DeleteMemberCommand() { Id=id};
             var response = await _mediator.Send(command);

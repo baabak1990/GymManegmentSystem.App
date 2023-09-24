@@ -41,27 +41,27 @@ namespace GymManegmentApplication.Features.Member.Handler.Command
             {
                 response.IsSuccess = false;
                 response.Message = "validation failed";
-                response.Errors=validator.Errors.Select(q=>q.ErrorMessage).ToList();
+                response.Errors = validator.Errors.Select(q => q.ErrorMessage).ToList();
             }
-
-
-            var member = await _memberRepository.Get(request.EditMemberDto.Id);
-            if (member == null) throw new NotFoundException(nameof(member),request.EditMemberDto.Id);
-
-
-            _mapper.Map(request.EditMemberDto, member);
-            await _memberRepository.Update(member);
-            response.IsSuccess = true;
-            response.Message = "Edited Successfully";
-            response.Id=request.EditMemberDto.Id;
-            //Sending email or SMS For client 
-            var email = new Email()
+            else
             {
-                To = "Sample@gmail.com",
-                Body = $"Dear {request.EditMemberDto.FirstName} {request.EditMemberDto.LastName} " +
-                       $"Your account recharged  successfully . Your new membership started from {DateTime.Now} ",
-                Subject = "You Are Registered successfully !!!"
-            };
+                var member = await _memberRepository.Get(request.EditMemberDto.Id);
+                if (member == null) throw new NotFoundException(nameof(member), request.EditMemberDto.Id);
+
+                _mapper.Map(request.EditMemberDto, member);
+                await _memberRepository.Update(member);
+                response.IsSuccess = true;
+                response.Message = "Edited Successfully";
+                response.Id = request.EditMemberDto.Id;
+                //Sending email or SMS For client 
+                var email = new Email()
+                {
+                    To = "Sample@gmail.com",
+                    Body = $"Dear {request.EditMemberDto.FirstName} {request.EditMemberDto.LastName} " +
+                           $"Your account recharged  successfully . Your new membership started from {DateTime.Now} ",
+                    Subject = "You Are Registered successfully !!!"
+                };
+            }
 
             return response;
         }
