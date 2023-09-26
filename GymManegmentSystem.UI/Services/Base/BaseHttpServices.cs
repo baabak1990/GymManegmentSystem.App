@@ -13,6 +13,7 @@ namespace GymManegmentSystem.UI.Services.Base
             _storageServices = storageServices;
             _client = client;
         }
+
         //ApiException Is Exist in IClient Interface 
         protected Response<Guid> ConvertApiExceptions<Guid>(ApiException ex)
         {

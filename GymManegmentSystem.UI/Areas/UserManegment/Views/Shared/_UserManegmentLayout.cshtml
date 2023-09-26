@@ -16,7 +16,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 <!-- /Head -->
 <!-- Body -->
 <body>
-@RenderBody()
+
     <!-- Loading Container -->
     <div class="loading-container">
         <div class="loader"></div>
@@ -30,7 +30,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
         <!-- Page Container -->
         <div class="page-container">
             <!-- Page Sidebar -->
-            @RenderBody()
+        
             <div class="page-sidebar" id="sidebar">
                 <!-- Page Sidebar Header-->
                 <div class="sidebar-header-wrapper">
@@ -43,7 +43,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 <ul class="nav sidebar-menu">
                     <!--Dashboard-->
                     <li>
-                        <a href="index.html">
+                        <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="Create">
                             <i class="fa fa-user-plus green">   </i>
                             <span class="menu-text " style="color: gray;font-size: larger">  ثبت نام  </span>
                         </a>
@@ -308,7 +308,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                     <ul class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
-                            <a href="#">خانه</a>
+                            <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="Index">خانه</a>
                         </li>
                         <li class="active">داشبورد</li>
                     </ul>
@@ -320,7 +320,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                             داشبورد
                         </h1>
                     </div>
-                 
+                
                     <div class="header-buttons">
                         <a class="sidebar-toggler" href="#">
                             <i class="fa fa-arrows-h"></i>
@@ -334,9 +334,9 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                     </div>
                   
                 </div>
-            
+              
             </div>
-         
+        @RenderBody()
         </div>
     
       

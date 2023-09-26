@@ -34,16 +34,14 @@ namespace GymManegmentSystem.UI.Services
             throw new NotImplementedException();
         }
 
-        public Task UpdateMember(MemberVM vm)
+        public Task<Response<int>> UpdateMember(int id, MemberVM vm)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteMember(MemberVM vm)
+        public Task<Response<int>> DeleteMember(int id)
         {
             throw new NotImplementedException();
         }
-
-     
     }
 }

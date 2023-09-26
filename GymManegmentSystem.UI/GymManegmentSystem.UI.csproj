@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\UserManegment\Data\" />
-    <Folder Include="Areas\UserManegment\Models\" />
   </ItemGroup>
 
 </Project>
