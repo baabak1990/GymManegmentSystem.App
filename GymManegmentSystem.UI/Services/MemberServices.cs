@@ -10,23 +10,27 @@ namespace GymManegmentSystem.UI.Services
         #region Constructor
         private readonly ILocalStorageServices _storageServices;
         private readonly IMapper _mapper;
-        private readonly IClient _client;
+        private readonly IClient _httpclient;
         public MemberServices(ILocalStorageServices storageServices, IClient client, IMapper mapper) : base(storageServices, client)
         {
             _storageServices = storageServices;
-            _client = client;
+            _httpclient = client;
             _mapper = mapper;
         }
 
         #endregion
-        public Task<List<MemberVM>> GetMembers()
+        public async Task<List<MemberVM>> GetMembers()
         {
-            throw new NotImplementedException();
+            //This _client comes from BaseHttpServices class 
+            var members = await _client.MemberAllAsync();
+            return _mapper.Map<List<MemberVM>>(members);
         }
 
-        public Task<MemberVM> GetMemberWithDetails(int id)
+        public async Task<MemberVM> GetMemberWithDetails(int id)
         {
-            throw new NotImplementedException();
+            //This _client comes from BaseHttpServices class 
+            var member = await _client.MemberGETAsync(id);
+            return _mapper.Map<MemberVM>(member);
         }
 
         public Task<Response<int>> CreateMember(CreateMemberVM vm)
@@ -39,9 +43,18 @@ namespace GymManegmentSystem.UI.Services
             throw new NotImplementedException();
         }
 
-        public Task<Response<int>> DeleteMember(int id)
+        public async Task<Response<int>> DeleteMember(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _client.MemberDELETEAsync(id);
+                return new Response<int>() { Success = true };
+            }
+            catch (ApiException ex)
+            {
+                //This method comes from BassHttpsServices
+                return ConvertApiExceptions<int>(ex);
+            }
         }
     }
 }

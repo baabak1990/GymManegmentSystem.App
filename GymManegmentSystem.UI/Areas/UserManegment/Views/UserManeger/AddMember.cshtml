@@ -1,10 +1,8 @@
 ﻿@model CreateMemberVM
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "AddMember";
     Layout = "~/Areas/UserManegment/Views/Shared/_UserManegmentLayout.cshtml";
 }
-
-
 
 <div class="container">
     <div class="row col-12" style="padding-right: 5%">
@@ -17,7 +15,7 @@
                 </div>
                 <div class="widget-body">
                     <div class="collapse in">
-                        <form asp-area="UserManegment" asp-controller="UserManeger" asp-action="Create" asp-antiforgery="true" >
+                        <form asp-area="UserManegment" asp-controller="UserManeger" asp-action="Index">
                             <div class="form-group">
                                 <label asp-for="FirstName">نام </label>
                                 <input class="form-control" />
@@ -28,15 +26,15 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="BirthDate">تاریخ تولد </label>
-                                <br/>
-                                <input  class="calendar" asp-for="BirthDate" style="max-width: 100%" />
+                                <br />
+                                <input class="calendar" asp-for="BirthDate" style="max-width: 100%" />
                             </div>
                             <div class="form-group">
                                 <label asp-for="MobileNumber">شماره موبایل </label>
-                                <input  class="form-control" />
+                                <input class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label >نوع عضویت </label>
+                                <label>نوع عضویت </label>
                                 <input class="form-control" />
                             </div>
                             <button type="submit" class="btn btn-success shiny ">ثبت</button>

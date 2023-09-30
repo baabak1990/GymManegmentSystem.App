@@ -11,8 +11,14 @@ namespace GymManegmentSystem.UI.Areas.UserManegment.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(IFormCollection collection)
+        public ActionResult AddMember(IFormCollection collection)
+        {
+            return View();
+        }
+
+
+        [Route("rp")]
+        public IActionResult PR()
         {
             return View();
         }

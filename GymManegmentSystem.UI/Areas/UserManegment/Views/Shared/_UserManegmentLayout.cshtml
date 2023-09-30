@@ -43,14 +43,14 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 <ul class="nav sidebar-menu">
                     <!--Dashboard-->
                     <li>
-                        <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="Create">
+                        <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="AddMember">
                             <i class="fa fa-user-plus green">   </i>
                             <span class="menu-text " style="color: gray;font-size: larger">  ثبت نام  </span>
                         </a>
                     </li>
                     <!--Databoxes-->
                     <li>
-                        <a href="databoxes.html">
+                        <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="PR">
                             <i class="fa fa-user red">  </i>
                             <span class="menu-text" style="color: gray;font-size: larger">   دسترسی به کاربران   </span>
                         </a>
