@@ -43,7 +43,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 <ul class="nav sidebar-menu">
                     <!--Dashboard-->
                     <li>
-                        <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="AddMember">
+                        <a asp-area="UserManegment" asp-controller="UserManeger" asp-action="AddMember" >
                             <i class="fa fa-user-plus green">   </i>
                             <span class="menu-text " style="color: gray;font-size: larger">  ثبت نام  </span>
                         </a>
@@ -56,7 +56,13 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </a>
                     </li>
                     <li>
-                        <a href="databoxes.html">
+                        <a asp-area="UserManegment" asp-controller="Home" asp-action="Index">
+                            <i class="fa fa-gears blue">   </i>
+                            <span class="menu-text" style="color: gray;font-size: larger">   مدیریت باشگاه   </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Show">
                             <i class="fa fa-gears blue">   </i>
                             <span class="menu-text" style="color: gray;font-size: larger">   مدیریت باشگاه   </span>
                         </a>

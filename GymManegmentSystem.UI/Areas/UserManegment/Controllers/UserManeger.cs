@@ -2,7 +2,8 @@
 
 namespace GymManegmentSystem.UI.Areas.UserManegment.Controllers
 {
-    [Area(nameof(UserManegment))]
+    [Area("UserManegment")]
+    [Route("UserManegment/[controller]/[action]")]
     public class UserManeger : Controller
     {
         [HttpGet]
@@ -11,13 +12,15 @@ namespace GymManegmentSystem.UI.Areas.UserManegment.Controllers
             return View();
         }
 
-        public ActionResult AddMember(IFormCollection collection)
+        [HttpPost("AddMember")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddMember(IFormCollection collection)
         {
             return View();
         }
 
-
-        [Route("rp")]
+        [HttpGet]
+        
         public IActionResult PR()
         {
             return View();

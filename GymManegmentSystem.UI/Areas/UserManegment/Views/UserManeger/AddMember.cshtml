@@ -1,5 +1,6 @@
 ﻿@model CreateMemberVM
 @{
+
     ViewData["Title"] = "AddMember";
     Layout = "~/Areas/UserManegment/Views/Shared/_UserManegmentLayout.cshtml";
 }
@@ -15,7 +16,7 @@
                 </div>
                 <div class="widget-body">
                     <div class="collapse in">
-                        <form asp-area="UserManegment" asp-controller="UserManeger" asp-action="Index">
+                        <form asp-area="UserManegment" asp-controller="UserManeger" asp-action="Index" method="post">
                             <div class="form-group">
                                 <label asp-for="FirstName">نام </label>
                                 <input class="form-control" />

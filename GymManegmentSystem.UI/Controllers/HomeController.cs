@@ -17,8 +17,11 @@ namespace GymManegmentSystem.UI.Controllers
             return View();
         }
 
-
-        
+        //[HttpPost]
+        public IActionResult Show()
+        {
+            return View();
+        }
        
     }
 }
