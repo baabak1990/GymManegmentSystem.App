@@ -1,8 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row col-md-12" style="margin-top:6%">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>UserName</label>
+                            <input type="email" class="form-control" placeholder="UserName">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> RememberME!
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer" style="margin-top: 6%">
+                        <button type="submit" class="btn btn-success">Enter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card card-body">
+                <img src="/img/Gym.jpg" style="max-width: 80%;max-height: 80%" />
+            </div>
+        </div>
+
+
+    </div>
 </div>

@@ -18,27 +18,29 @@ namespace GymManagementUI.AspNetMVC.UI.Services
 			_mapper = mapper;
 		}
 
-		public Task<List<MemberVm>> GetMembersAsync()
+		public async Task<List<MemberVm>> GetMembersAsync()
+		{
+			var members = await _client.MemberAllAsync();
+			return _mapper.Map<List<MemberVm>>(members);
+		}
+
+		public async Task<MemberVm> GetMemberAsync(int Id)
+		{
+			var member = await _client.MemberGETAsync(Id);
+			return _mapper.Map<MemberVm>(member);
+		}
+
+		public async Task<Response<int>> CreateMember(CreateMemberVm memberVm)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<MemberVm> GetMemberAsync(int Id)
+		public async Task<Response<int>> UpdateMember(int id,MemberVm memberVm)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<Response<int>> CreateMember(CreateMemberVm memberVm)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Task UpdateMember(MemberVm memberVm)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Task DeleteMember(MemberVm memberVm)
+		public async Task<Response<int>> DeleteMember(int id)
 		{
 			throw new NotImplementedException();
 		}

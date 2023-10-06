@@ -8,6 +8,6 @@ public interface IMemberServices
 	Task<List<MemberVm>> GetMembersAsync();
 	Task<MemberVm> GetMemberAsync(int Id);
 	Task<Response<int>> CreateMember(CreateMemberVm memberVm); 
-	Task UpdateMember(MemberVm memberVm);
-	Task DeleteMember(MemberVm memberVm);
+	Task<Response<int>> UpdateMember(int id, MemberVm memberVm);
+	Task<Response<int>> DeleteMember(int id);
 }
