@@ -6,20 +6,20 @@ namespace GymManegmentSystem.UI.Areas.UserManegment.Controllers
     [Route("UserManegment/[controller]/[action]")]
     public class UserManeger : Controller
     {
-        [HttpGet]
+        [HttpGet("index")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost("AddMember")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddMember(IFormCollection collection)
         {
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("PR")]
         
         public IActionResult PR()
         {

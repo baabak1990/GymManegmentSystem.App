@@ -2,6 +2,7 @@ using System.Reflection;
 using GymManegmentSystem.UI.Contracts;
 using GymManegmentSystem.UI.Services;
 using GymManegmentSystem.UI.Services.Base;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+
+
 #region HttpClient
 //Using NSwage To Generate These Two Interface and class 
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44331"));
+
 
 #endregion
 #region IoC
@@ -31,11 +35,16 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+//app.UseMvcWithDefaultRoute();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+	name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
@@ -43,11 +52,5 @@ app.UseEndpoints(endpoints =>
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 });
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
-
 
 app.Run();
