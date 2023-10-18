@@ -115,13 +115,11 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Client : IClient
     {
-        private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public Client(string baseUrl, System.Net.Http.HttpClient httpClient)
+        public Client(System.Net.Http.HttpClient httpClient)
         {
-            BaseUrl = baseUrl;
             _httpClient = httpClient;
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
@@ -131,12 +129,6 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
             var settings = new Newtonsoft.Json.JsonSerializerSettings();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set { _baseUrl = value; }
         }
 
         protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
@@ -160,7 +152,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
         public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<MemberDto>> MemberAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Member");
+            urlBuilder_.Append("api/Member");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -234,7 +226,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
         public virtual async System.Threading.Tasks.Task<BaseCommonResponse> MemberPOSTAsync(CreateMemberDto body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Member");
+            urlBuilder_.Append("api/Member");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -315,7 +307,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Member/{id}");
+            urlBuilder_.Append("api/Member/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -393,7 +385,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Member/{id}");
+            urlBuilder_.Append("api/Member/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -469,7 +461,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Member/{id}");
+            urlBuilder_.Append("api/Member/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -538,7 +530,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
         public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<MembershipDto>> MembershipAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/membership");
+            urlBuilder_.Append("api/membership");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -612,7 +604,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
         public virtual async System.Threading.Tasks.Task<BaseCommonResponse> MembershipPOSTAsync(CreateMembershipDTO body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/membership");
+            urlBuilder_.Append("api/membership");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -693,7 +685,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/membership/{id}");
+            urlBuilder_.Append("api/membership/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -771,7 +763,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/membership/{id}");
+            urlBuilder_.Append("api/membership/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -847,7 +839,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/membership/{id}");
+            urlBuilder_.Append("api/membership/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
