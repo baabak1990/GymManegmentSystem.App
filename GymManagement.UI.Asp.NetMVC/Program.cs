@@ -1,16 +1,19 @@
+using GymManagement.UI.Asp.NetMVC.Contracts;
+using GymManagement.UI.Asp.NetMVC.Services;
 using GymManagement.UI.Asp.NetMVC.Services.Base;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
 #region HttpClient
+builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:7181"));
+#endregion
 
-builder.Services.AddHttpClient<IClient, Client>(
-    cl => cl.BaseAddress = new Uri("https://localhost:44331"));
+#region Ioc
+
+builder.Services.AddSingleton<ILocalStorageServices, LocalStorageServices>();
 
 #endregion
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

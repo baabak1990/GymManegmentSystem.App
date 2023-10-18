@@ -1,6 +1,7 @@
 ﻿using GymManagement.UI.Asp.NetMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using GymManagement.UI.Asp.NetMVC.Services.Base;
 
 namespace GymManagement.UI.Asp.NetMVC.Controllers
 {

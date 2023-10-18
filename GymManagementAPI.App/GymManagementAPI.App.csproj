@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GymManagement.UI.Asp.NetMVC\GymManagement.UI.Asp.NetMVC.csproj" />
     <ProjectReference Include="..\GymManagmentSystem.Infrastructurs\GymManagmentSystem.Infrastructurs.csproj" />
     <ProjectReference Include="..\GymManagmentSystem.Presistance\GymManagmentSystem.Presistance.csproj" />
     <ProjectReference Include="..\GymManegmentApplication\GymManegmentApplication.csproj" />
