@@ -1114,7 +1114,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services.Base
         public string LastName { get; set; }
 
         [Newtonsoft.Json.JsonProperty("birthDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset BirthDate { get; set; }
+        public System.DateTime BirthDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("mobileNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MobileNumber { get; set; }

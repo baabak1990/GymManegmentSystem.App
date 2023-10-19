@@ -1,3 +1,4 @@
+using System.Reflection;
 using GymManagement.UI.Asp.NetMVC.Contracts;
 using GymManagement.UI.Asp.NetMVC.Services;
 using GymManagement.UI.Asp.NetMVC.Services.Base;
@@ -6,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 #region HttpClient
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:7181"));
 #endregion
-
 #region Ioc
 
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddSingleton<ILocalStorageServices, LocalStorageServices>();
-
+builder.Services.AddScoped<IMemberServices, MemberService>();
 #endregion
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,6 +32,13 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
