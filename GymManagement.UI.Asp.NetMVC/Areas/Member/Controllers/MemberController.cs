@@ -20,9 +20,14 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         }
 
         // GET: MemberController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var member=await _services.GetMemberAsync(id);
+            if (member == null)
+            {
+                throw new Exception("Ops   Something is Wrong !!!");
+            }
+            return View(member);
         }
 
         // GET: MemberController/Create

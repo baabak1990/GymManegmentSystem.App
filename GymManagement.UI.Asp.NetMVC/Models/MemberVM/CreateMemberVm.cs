@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GymManagement.UI.Asp.NetMVC.Models.MemberShipVM;
+using System.ComponentModel.DataAnnotations;
 
 namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
 {
@@ -11,7 +12,9 @@ namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
         [MaxLength(150, ErrorMessage = "Please Use lesser than 150 characters")]
         public string LastName { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public int Membership_Id { get; set; }
+        public MemberShipVM.MemberShipVM MemberShipVM { get; set; }
+        public DateTimeOffset BirthDate { get; set; }
 
         [Required(ErrorMessage = "Mobile Number Is Required !!!")]
         public string MobileNumber { get; set; }
@@ -20,5 +23,6 @@ namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
     public class MemberVm:CreateMemberVm
     {
         public int Id { get; set; }
+
     }
 }

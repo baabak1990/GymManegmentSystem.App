@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Register New Member";
+﻿
+@{
+    ViewData["Title"] = "Edit";
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
 }
 
@@ -10,7 +11,7 @@
             <a asp-area="Member" asp-controller="Member" asp-action="Index">Home</a>
         </li>
         <li class="active">
-            <a asp-area="Member" asp-controller="Member" asp-action="Create">Register Member</a>
+            <a asp-area="Member" asp-controller="Member" asp-action="Edit">Edit Member</a>
         </li>
     </ul>
 </div>
@@ -19,7 +20,7 @@
     <div class="col-lg-8 col-sm-8 col-xs-12" style="margin-top: 1%;margin-left: 1%">
         <div class="widget flat radius-bordered">
             <div class="widget-header bg-blue">
-                <span class="widget-caption">Registration Form</span>
+                <span class="widget-caption">Edit Form</span>
             </div>
             <div class="widget-body">
                 <div id="registration-form">
@@ -70,3 +71,4 @@
         <img src="~/Member/assets/img/avatars/Free_user.png" style="max-width: 350px;max-height: 350px;margin-top: 3%" />
     </div>
 </div>
+

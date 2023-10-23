@@ -53,25 +53,30 @@
                                 Username
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
-                                                    Full Name
+                                                    Last Name
                                                 : activate to sort column ascending" style="width: 178.4px;">
-                                Full Name
+                                Last Name
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Points
                                                 : activate to sort column ascending" style="width: 74.4px;">
-                                Points
+                               Mobile
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Notes
                                                 : activate to sort column ascending" style="width: 122.4px;">
-                                Notes
+                                MembershipType
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                   MembershipType
+                                                : activate to sort column ascending" style="width: 122.4px;">
+                                Year of birth
                             </th>
                             <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
 
                                                 " style="width: 213.4px;">
 
-                            </th>
+                           Operations </th>
                         </tr>
                     </thead>
 
@@ -83,9 +88,11 @@
                                 <td class="sorting_1">@item.FirstName</td>
                                 <td>@item.LastName</td>
                                 <td>@item.MobileNumber</td>
-                                <td class="center ">@item.BirthDate</td>
+                                <td>@item.Membership_Id</td>
+                                 <td class="center ">@item.BirthDate.Year</td>
                                 <td>
-                                    <a href="#" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> Edit</a>
+                                    <a asp-area="Member" asp-controller="Member" asp-action="Edit" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> Edit</a>
+                                    <a asp-area="Member" asp-controller="Member" asp-action="Details" asp-route-id="@item.Id"  class="btn btn-warning btn-xs edit"><i class="fa fa-info"></i> Details</a>
                                     <a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> Delete</a>
                                 </td>
                             </tr>

@@ -22,7 +22,7 @@ namespace GymManagmentSystem.Presistance.Repositories
         #endregion
 
 
-        public async Task<T> Get(int id)
+        public  async Task<T> Get(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
