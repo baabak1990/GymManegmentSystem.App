@@ -24,7 +24,6 @@ namespace GymManagmentSystem.Presistance.Repositories
         public async Task<Member> GetWithDetails(int id)
         {
             return await _context.Set<Member>().Include(c => c.MemberShip)
-                .ThenInclude(m => m.Name)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
 

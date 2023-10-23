@@ -30,7 +30,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services
 
         public async Task<MemberVm> GetMemberAsync(int id)
         {
-            var member = await _client.MemberGETAsync(id);
+            var member = await _client.GetMembersWithDetailsAsync(id);
             return _mapper.Map<MemberVm>(member);
         }
 

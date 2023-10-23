@@ -31,7 +31,8 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         }
 
         // GET: MemberController/Create
-      
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
