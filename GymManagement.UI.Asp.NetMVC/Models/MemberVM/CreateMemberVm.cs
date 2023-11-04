@@ -6,7 +6,7 @@ namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
     public class CreateMemberVm
     {
         [Required(ErrorMessage = "Name Is Required !")]
-        [MaxLength(150,ErrorMessage = "Please Use lesser than 150 characters")]
+        [MaxLength(150, ErrorMessage = "Please Use lesser than 150 characters")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "LastName Is Required !")]
         [MaxLength(150, ErrorMessage = "Please Use lesser than 150 characters")]
@@ -18,11 +18,21 @@ namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
 
         [Required(ErrorMessage = "Mobile Number Is Required !!!")]
         public string MobileNumber { get; set; }
+        public string Avatar { get; set; }
+        public IFormFile UserAvatar { get; set; }
+        public Gender Gender { get; set; }
+        public bool IsPresent { get; set; }
     }
 
-    public class MemberVm:CreateMemberVm
+    public class MemberVm : CreateMemberVm
     {
         public int Id { get; set; }
 
+    }
+
+
+    public enum Gender
+    {
+        Male, Female, Unknown
     }
 }

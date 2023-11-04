@@ -60,7 +60,7 @@
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Points
                                                 : activate to sort column ascending" style="width: 74.4px;">
-                               Mobile
+                                Mobile
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Notes
@@ -68,15 +68,26 @@
                                 MembershipType
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                    Notes
+                                                : activate to sort column ascending" style="width: 122.4px;">
+                                Gender
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                    Notes
+                                                : activate to sort column ascending" style="width: 122.4px;">
+                                Avatar
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                    MembershipType
                                                 : activate to sort column ascending" style="width: 122.4px;">
                                 Year of birth
                             </th>
-                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+                     <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
 
                                                 " style="width: 213.4px;">
 
-                           Operations </th>
+                                Operations
+                            </th>
                         </tr>
                     </thead>
 
@@ -85,15 +96,34 @@
                         {
 
                             <tr role="row" class="odd">
-                                <td class="sorting_1">@item.FirstName</td>
+                                <td class="sorting_1">
+                                    @{
+                                        if (item.IsPresent == true)
+                                        {
+                                            <p class="text green">@item.FirstName</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text red">@item.FirstName</p>
+                                        }
+                                    }
+                                    </td>
                                 <td>@item.LastName</td>
                                 <td>@item.MobileNumber</td>
                                 <td>@item.Membership_Id</td>
-                                 <td class="center ">@item.BirthDate.Year</td>
+                                <td>
+                                    @item.Gender
+                                </td>
+                                <td>
+                                    <img src="~/Img/@item.Avatar" class="img-thumbnail" style="max-height: 100px;max-width: 100px" />
+                                </td>
+                                <td class="center ">@item.BirthDate.Year</td>
                                 <td>
                                     <a asp-area="Member" asp-controller="Member" asp-action="Edit" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> Edit</a>
-                                    <a asp-area="Member" asp-controller="Member" asp-action="Details" asp-route-id="@item.Id"  class="btn btn-warning btn-xs edit"><i class="fa fa-info"></i> Details</a>
+                                    <a asp-area="Member" asp-controller="Member" asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning btn-xs edit"><i class="fa fa-info"></i> Details</a>
                                     <a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                    <a href="#" class="btn btn-xs azure" style="margin: 0.5px"><i class="fa fa-mail-forward"></i> Send Email</a>
+                                    <a href="#" class="btn btn-primary btn-xs " style="margin: 0.5px"><i class="fa fa-file-text"></i> Send SMS</a>
                                 </td>
                             </tr>
                         }

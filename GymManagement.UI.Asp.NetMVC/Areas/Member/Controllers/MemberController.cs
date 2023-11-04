@@ -1,4 +1,5 @@
 ﻿using GymManagement.UI.Asp.NetMVC.Contracts;
+using GymManagement.UI.Asp.NetMVC.Models.MemberVM;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         public MemberController(IMemberServices services)
         {
             _services = services;
-        }        
+        }
         // GET: MemberController
         public async Task<ActionResult> Index()
         {
@@ -22,7 +23,7 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         // GET: MemberController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var member=await _services.GetMemberAsync(id);
+            var member = await _services.GetMemberAsync(id);
             if (member == null)
             {
                 throw new Exception("Ops   Something is Wrong !!!");
@@ -41,16 +42,22 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         // POST: MemberController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(CreateMemberVm memberVm)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _services.CreateMember(memberVm);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", response.ValidationError);
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw new Exception("Something wrong , please try again !");
             }
+            return View(memberVm);
         }
 
         // GET: MemberController/Edit/5

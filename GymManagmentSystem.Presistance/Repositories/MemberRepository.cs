@@ -32,6 +32,7 @@ namespace GymManagmentSystem.Presistance.Repositories
         public async Task<IReadOnlyCollection<Member>> GetAllWithDetails()
         {
             return await _context.Members.Include(c => c.MemberShip)
+                .ThenInclude(s=>s.Name)
                 .ToListAsync();
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GymManegmentSystemDomin.Entity.Member;
 
 namespace GymManegmentApplication.DTOs.MemberDTOs
 {
@@ -16,5 +17,7 @@ namespace GymManegmentApplication.DTOs.MemberDTOs
         public int Membership_Id { get; set; }
         public bool IsValid { get; set; }
         public bool IsPresent { get; set; }
+        public string Avatar { get; set; }
+        public Gender Gender { get; set; }
     }
 }

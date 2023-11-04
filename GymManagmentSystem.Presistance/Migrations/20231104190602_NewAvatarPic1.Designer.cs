@@ -4,6 +4,7 @@ using GymManagmentSystem.Presistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagmentSystem.Presistance.Migrations
 {
     [DbContext(typeof(GymManagementDbContext))]
-    partial class GymManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231104190602_NewAvatarPic1")]
+    partial class NewAvatarPic1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,6 @@ namespace GymManagmentSystem.Presistance.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsPresent")
                         .HasColumnType("bit");
@@ -77,9 +77,8 @@ namespace GymManagmentSystem.Presistance.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateTime(2000, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreateDate = new DateTime(2023, 11, 4, 22, 43, 21, 661, DateTimeKind.Local).AddTicks(1571),
+                            CreateDate = new DateTime(2023, 11, 4, 22, 36, 2, 717, DateTimeKind.Local).AddTicks(9618),
                             FirstName = "Baabak",
-                            Gender = 0,
                             IsPresent = true,
                             IsValid = true,
                             LastName = "Aghaei",
@@ -90,9 +89,8 @@ namespace GymManagmentSystem.Presistance.Migrations
                         {
                             Id = 2,
                             BirthDate = new DateTime(1990, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreateDate = new DateTime(2023, 11, 4, 22, 43, 21, 661, DateTimeKind.Local).AddTicks(1586),
+                            CreateDate = new DateTime(2023, 11, 4, 22, 36, 2, 717, DateTimeKind.Local).AddTicks(9630),
                             FirstName = "Leila",
-                            Gender = 0,
                             IsPresent = true,
                             IsValid = true,
                             LastName = "Aghaei",
@@ -132,7 +130,7 @@ namespace GymManagmentSystem.Presistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2023, 11, 4, 22, 43, 21, 661, DateTimeKind.Local).AddTicks(1655),
+                            CreateDate = new DateTime(2023, 11, 4, 22, 36, 2, 717, DateTimeKind.Local).AddTicks(9723),
                             Duration = 12,
                             Name = 2,
                             Price = 25000.0
@@ -140,7 +138,7 @@ namespace GymManagmentSystem.Presistance.Migrations
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2023, 11, 4, 22, 43, 21, 661, DateTimeKind.Local).AddTicks(1657),
+                            CreateDate = new DateTime(2023, 11, 4, 22, 36, 2, 717, DateTimeKind.Local).AddTicks(9726),
                             Duration = 15,
                             Name = 1,
                             Price = 30000.0
@@ -148,7 +146,7 @@ namespace GymManagmentSystem.Presistance.Migrations
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2023, 11, 4, 22, 43, 21, 661, DateTimeKind.Local).AddTicks(1658),
+                            CreateDate = new DateTime(2023, 11, 4, 22, 36, 2, 717, DateTimeKind.Local).AddTicks(9727),
                             Duration = 20,
                             Name = 0,
                             Price = 35000.0
@@ -156,7 +154,7 @@ namespace GymManagmentSystem.Presistance.Migrations
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2023, 11, 4, 22, 43, 21, 661, DateTimeKind.Local).AddTicks(1659),
+                            CreateDate = new DateTime(2023, 11, 4, 22, 36, 2, 717, DateTimeKind.Local).AddTicks(9728),
                             Duration = 1,
                             Name = 3,
                             Price = 1000.0

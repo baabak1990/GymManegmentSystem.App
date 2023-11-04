@@ -9,7 +9,7 @@ using GymManegmentSystemDomin.Entity.Membership;
 
 namespace GymManegmentSystemDomin.Entity.Member
 {
-    public class Member:BaseEntity
+    public class Member : BaseEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,7 +17,8 @@ namespace GymManegmentSystemDomin.Entity.Member
         public string MobileNumber { get; set; }
         public bool IsValid { get; set; }
         public bool IsPresent { get; set; }
-
+        public string? Avatar { get; set; }
+        public Gender Gender { get; set; }
         #region Relation
         [ForeignKey(nameof(MemberShip))]
         public int memberShip_Id { get; set; }
@@ -25,5 +26,10 @@ namespace GymManegmentSystemDomin.Entity.Member
 
         #endregion
 
+    }
+
+    public enum Gender
+    {
+        Male, Female
     }
 }
