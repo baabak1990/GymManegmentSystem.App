@@ -23,16 +23,28 @@ namespace GymManagmentSystem.Presistance.Repositories
         }
         public async Task<Member> GetWithDetails(int id)
         {
-            return await _context.Set<Member>().Include(c => c.MemberShip)
-                .FirstOrDefaultAsync(c => c.Id == id);
-
-
+            try
+            {
+               var result= await _context.Set<Member>().Include(c => c.MemberShip)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+               if (result == null)
+               {
+                   throw new Exception("Something Went wrong !!!");
+               }
+               return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
 
         public async Task<IReadOnlyCollection<Member>> GetAllWithDetails()
         {
             return await _context.Members.Include(c => c.MemberShip)
-                .ThenInclude(s=>s.Name)
+                .ThenInclude(s => s.Name)
                 .ToListAsync();
         }
     }

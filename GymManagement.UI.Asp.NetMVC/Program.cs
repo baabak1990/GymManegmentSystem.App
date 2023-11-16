@@ -12,6 +12,7 @@ builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddSingleton<ILocalStorageServices, LocalStorageServices>();
 builder.Services.AddScoped<IMemberServices, MemberService>();
+builder.Services.AddScoped<IMembershipServices,MembershipServices>();
 #endregion
 // Add services to the container.
 builder.Services.AddControllersWithViews();

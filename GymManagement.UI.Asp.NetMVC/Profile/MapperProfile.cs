@@ -18,9 +18,9 @@ namespace GymManagement.UI.Asp.NetMVC.Profile
 
             #region MemberShip
 
-            CreateMap<CreateMemberShipVM, CreateMembershipDTO>().ReverseMap();
-            CreateMap<MemberShipVM, MembershipDto>().ReverseMap();
-            CreateMap<MemberShipVM, EditMemberShipDTo>().ReverseMap();
+            CreateMap<CreateMembershipVM, CreateMembershipDTO>().ReverseMap();
+            CreateMap<MembershipVM, MembershipDto>().ReverseMap();
+            CreateMap<MembershipVM, EditMemberShipDTo>().ReverseMap();
 
 
             #endregion

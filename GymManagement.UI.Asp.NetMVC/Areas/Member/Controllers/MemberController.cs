@@ -9,9 +9,11 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
     public class MemberController : Controller
     {
         private readonly IMemberServices _services;
-        public MemberController(IMemberServices services)
+        private readonly IMembershipServices _membershipServices;
+        public MemberController(IMemberServices services, IMembershipServices membershipServices)
         {
             _services = services;
+            _membershipServices = membershipServices;
         }
         // GET: MemberController
         public async Task<ActionResult> Index()

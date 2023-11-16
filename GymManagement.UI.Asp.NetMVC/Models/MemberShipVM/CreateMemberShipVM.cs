@@ -1,6 +1,6 @@
 ﻿namespace GymManagement.UI.Asp.NetMVC.Models.MemberShipVM
 {
-    public class CreateMemberShipVM
+    public class CreateMembershipVM
     {
         public MembershipTypeVm Name { get; set; }
         public int Duration { get; set; }
@@ -8,7 +8,7 @@
 
     }
 
-    public class MemberShipVM:CreateMemberShipVM
+    public class MembershipVM:CreateMembershipVM
     {
         public int Id { get; set; }
     }
@@ -16,9 +16,9 @@
 
     public enum MembershipTypeVm
     {
-        Golden,
-        Silver,
-        Bronze,
-        Daily
+        Golden=1,
+        Silver=2,
+        Bronze=4,
+        Daily=6
     }
 }

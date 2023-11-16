@@ -16,4 +16,11 @@
  
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Membership\Controllers\" />
+    <Folder Include="Areas\Membership\Data\" />
+    <Folder Include="Areas\Membership\Models\" />
+    <Folder Include="Areas\Membership\Views\" />
+  </ItemGroup>
+
 </Project>

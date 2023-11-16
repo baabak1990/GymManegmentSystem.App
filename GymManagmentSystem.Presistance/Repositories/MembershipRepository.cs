@@ -14,5 +14,6 @@ namespace GymManagmentSystem.Presistance.Repositories
         public MembershipRepository(GymManagementDbContext context) : base(context)
         {
         }
+
     }
 }

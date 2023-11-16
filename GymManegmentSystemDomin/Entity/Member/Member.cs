@@ -19,6 +19,7 @@ namespace GymManegmentSystemDomin.Entity.Member
         public bool IsPresent { get; set; }
         public string? Avatar { get; set; }
         public Gender Gender { get; set; }
+
         #region Relation
         [ForeignKey(nameof(MemberShip))]
         public int memberShip_Id { get; set; }
@@ -32,4 +33,5 @@ namespace GymManegmentSystemDomin.Entity.Member
     {
         Male, Female
     }
+    
 }

@@ -13,7 +13,7 @@ namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
         public string LastName { get; set; }
 
         public int Membership_Id { get; set; }
-        public MemberShipVM.MemberShipVM MemberShipVM { get; set; }
+        public MemberShipVM.MembershipVM MemberShipVM { get; set; }
         public DateTimeOffset BirthDate { get; set; }
 
         [Required(ErrorMessage = "Mobile Number Is Required !!!")]

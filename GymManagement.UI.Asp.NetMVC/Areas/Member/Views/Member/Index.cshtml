@@ -1,8 +1,9 @@
-﻿@model IEnumerable<GymManagement.UI.Asp.NetMVC.Models.MemberVM.MemberVm>
+﻿@using GymManagement.UI.Asp.NetMVC.Models.MemberShipVM
+@model IEnumerable<GymManagement.UI.Asp.NetMVC.Models.MemberVM.MemberVm>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
-}
+   }
 <div class="page-breadcrumbs">
     <ul class="breadcrumb">
         <li>
@@ -82,7 +83,7 @@
                                                 : activate to sort column ascending" style="width: 122.4px;">
                                 Year of birth
                             </th>
-                     <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
 
                                                 " style="width: 213.4px;">
 
@@ -107,10 +108,26 @@
                                             <p class="text red">@item.FirstName</p>
                                         }
                                     }
-                                    </td>
+                                </td>
                                 <td>@item.LastName</td>
                                 <td>@item.MobileNumber</td>
-                                <td>@item.Membership_Id</td>
+                                <td>
+                                    @switch (item.Membership_Id)
+                                    {
+                                        case 1:
+                                            <p class="text text gold">Golden</p>
+                                            break; 
+                                        case 2:
+                                            <p class="text text silver">Silver</p>
+                                            break; 
+                                        case 4:
+                                            <p class="text text red">Bronze</p>
+                                            break; 
+                                        case 6:
+                                            <p class="text text text-black">Daily</p>
+                                            break; 
+                                    }
+                                </td>
                                 <td>
                                     @item.Gender
                                 </td>
