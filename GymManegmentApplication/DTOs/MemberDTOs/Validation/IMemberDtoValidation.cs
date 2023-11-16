@@ -21,7 +21,7 @@ namespace GymManegmentApplication.DTOs.MemberDTOs.Validation
                 .NotEmpty().WithMessage("Can not be Empty")
                 .NotNull().WithMessage("Can not be Null");
 
-            RuleFor(m=>m.FirstName)
+            RuleFor(m => m.FirstName)
                 .NotEmpty().WithMessage("Can not be Empty")
                 .NotNull().WithMessage("Can not be Null")
                 .MaximumLength(150).WithMessage("Can not be more than 150 Character");
@@ -34,17 +34,25 @@ namespace GymManegmentApplication.DTOs.MemberDTOs.Validation
             RuleFor(m => m.MobileNumber)
                 .NotEmpty().WithMessage("Can not be Empty")
                 .NotNull().WithMessage("Can not be Null")
-                .Matches("(\\+98|0)?9\\d{9}$");
+                .Matches("(\\+98|0)?9\\d{9}$")
+                .MustAsync(async (num, id) =>
+                {
+                    var exist = _memberRepository.IsUserExistedByMobileNum(num);
+                    return !exist;
+                })
+                .WithMessage("MobileNumber is not valid");
+            ;
 
 
-            RuleFor(m => m.Membership_Id)
-                .GreaterThan(0)
-                .MustAsync(async (id, token) =>
-                    {
-                        var existed = await _memberRepository.IsExisted(id);
-                        return !existed;
-                    }
-                ).WithMessage("Is not Existed");
+            //RuleFor(m => m.Membership_Id)
+            //    .GreaterThan(0)
+            //    .MustAsync(async (id, token) =>
+            //        {
+            //            var existed = await _memberRepository.IsExisted(id);
+            //            return !existed;
+            //        }
+            //    ).WithMessage("Is not Existed");
+            //RuleFor(m=>m.MobileNumber)
 
         }
     }

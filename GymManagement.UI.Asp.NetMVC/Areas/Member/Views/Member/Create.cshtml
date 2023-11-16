@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Register New Member";
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
-}
+    }
 
 <div class="page-breadcrumbs">
     <ul class="breadcrumb">
@@ -33,30 +33,44 @@
                                 <input type="text" class="form-control" placeholder="First Name" asp-for="FirstName">
                                 <i class="glyphicon glyphicon-user circular green"></i>
                             </span>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
                                 <input type="text" class="form-control" placeholder="Last Name" asp-for="LastName">
                                 <i class="fa fa-info green"></i>
+                                <span asp-validation-for="LastName" class="text-danger"></span>
                             </span>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon icon-right">
+                                <select type="text" class="form-control" placeholder="Last Name" asp-for="Gender" asp-items="ViewBag.Gender"></select>
+                                <i class="fa fa-info green"></i>
+                            </span>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
                                 <input type="date" class="form-control" placeholder="Birth Date" asp-for="BirthDate">
                                 <i class="fa fa-calendar blue"></i>
+                                <span asp-validation-for="BirthDate" class="text-danger"></span>
                             </span>
+                           
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                @*                                 <select asp-for="Membership_Id" class="form-control"  placeholder="Membership Type" asp-items="new List<SelectListItem>(@Model.Membership_Id)" >MemberShip</select>
-                                *@                                <i class="fa fa-bars pink"></i>
+                                <select asp-for="Membership_Id" class="form-control"  asp-items="@ViewBag.Memberships">
+                                </select>
+                                <i class="fa fa-bars pink"></i>
                             </span>
+                            <span asp-validation-for="Membership_Id" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" class="form-control" placeholder="Phone" asp-for="MobileNumber">
                                 <i class="fa fa-mobile purple"></i>
                             </span>
+                            <span asp-validation-for="MobileNumber" class="text-danger"></span>
                         </div>
 
                         <br />
@@ -68,7 +82,7 @@
 
     </div>
     <div class="col-lg-3 col-sm-3 col-xs-3 border">
-        <img  src="~/Member/assets/img/avatars/Free_user.png" style="max-width: 350px;max-height: 350px;margin-top: 3%" />
+        <img src="~/Member/assets/img/avatars/Free_user.png" style="max-width: 350px;max-height: 350px;margin-top: 3%" />
         <button type="button" class="btn btn-info">Upload</button>
     </div>
 </div>

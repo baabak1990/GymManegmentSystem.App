@@ -47,5 +47,11 @@ namespace GymManagmentSystem.Presistance.Repositories
                 .ThenInclude(s => s.Name)
                 .ToListAsync();
         }
+
+        public bool IsUserExistedByMobileNum(string mobileNum)
+        {
+            var member = _context.Members.Where(u=>u.MobileNumber==mobileNum);
+            return member.Any();
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using GymManagement.UI.Asp.NetMVC.Contracts;
+using GymManagement.UI.Asp.NetMVC.Models.MemberShipVM;
 using GymManagement.UI.Asp.NetMVC.Models.MemberVM;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
 {
@@ -38,6 +40,24 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            List<SelectListItem> memberships = new List<SelectListItem>()
+            {
+                new SelectListItem("Select your Membership type", ""),
+                new SelectListItem("Gold", "1"),
+                new SelectListItem("Silver", "2"),
+                new SelectListItem("Bronze", "4"),
+                new SelectListItem("Daily", "6")
+
+            };
+            List<SelectListItem> gender = new List<SelectListItem>()
+            {
+                new SelectListItem("Please select your gender", ""),
+                new SelectListItem("Male", "1"),
+                new SelectListItem("Female", "2"),
+                new SelectListItem("Rather not to say", "3"),
+            };
+            ViewBag.Memberships = memberships;
+            ViewBag.Gender = gender;
             return View();
         }
 
@@ -46,18 +66,42 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CreateMemberVm memberVm)
         {
+            #region SelectlistItems
+
+            List<SelectListItem> memberships = new List<SelectListItem>()
+            {
+                new SelectListItem("Select your Membership type", ""),
+                new SelectListItem("Gold", "1"),
+                new SelectListItem("Silver", "2"),
+                new SelectListItem("Bronze", "4"),
+                new SelectListItem("Daily", "6")
+
+            };
+            List<SelectListItem> gender = new List<SelectListItem>()
+            {
+                new SelectListItem("Please select your gender", ""),
+                new SelectListItem("Male", "1"),
+                new SelectListItem("Female", "2"),
+                new SelectListItem("Rather not to say", "3"),
+            };
+            ViewBag.Gender = gender;
+            ViewBag.Memberships = memberships;
+
+            #endregion
             try
             {
+             
                 var response = await _services.CreateMember(memberVm);
                 if (response.Success)
                 {
                     return RedirectToAction(nameof(Index));
                 }
+
                 ModelState.AddModelError("", response.ValidationError);
             }
             catch(Exception ex)
             {
-                throw new Exception("Something wrong , please try again !");
+                 ModelState.AddModelError("MobileNumber", "Check your Mobile number!!!");
             }
             return View(memberVm);
         }

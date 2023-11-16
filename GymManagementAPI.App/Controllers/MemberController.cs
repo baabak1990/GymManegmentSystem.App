@@ -92,5 +92,12 @@ namespace GymManagementAPI.App.Controllers
             }
             return Ok(member);
         }
+
+        [HttpGet("GetMemberByMobileNumber/{string}")]
+        public async Task<ActionResult<bool>> IsuserExist(string num)
+        {
+            return await _mediator.Send(new IsUserExistedByMobileNumRequest() { MobileNum = num });
+        }
+
     }
 }

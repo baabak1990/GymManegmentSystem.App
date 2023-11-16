@@ -1,7 +1,9 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using GymManagement.UI.Asp.NetMVC.Contracts;
 using GymManagement.UI.Asp.NetMVC.Models.MemberVM;
 using GymManagement.UI.Asp.NetMVC.Services.Base;
+using Gender = GymManagement.UI.Asp.NetMVC.Models.MemberVM.Gender;
 
 namespace GymManagement.UI.Asp.NetMVC.Services
 {
@@ -10,7 +12,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services
         #region Constructor
         private readonly ILocalStorageServices _storageServices;
         private readonly IMapper _mapper;
-        private  IClient _httpclient;
+        private IClient _httpclient;
 
         public MemberService(ILocalStorageServices storageServices, IClient client, IMapper mapper) : base(storageServices, client)
         {
@@ -36,18 +38,28 @@ namespace GymManagement.UI.Asp.NetMVC.Services
 
         public async Task<Response<int>> CreateMember(CreateMemberVm vm)
         {
+
             try
             {
                 // Our return type in command feature is baseCommandResponse
-                var response=new Response<int>();
+                var response = new Response<int>();
                 CreateMemberDto dto = _mapper.Map<CreateMemberDto>(vm);
+                if (vm.Gender == Gender.Female)
+                {
+                    dto.Avatar = "2.jpg";
+                }
+                else
+                {
+                    dto.Avatar = "1.jpg";
+                }
+                dto.IsPresent = true;
+                dto.IsValid = true;
                 var apiResponse = await _client.MemberPOSTAsync(dto);
                 if (apiResponse.IsSuccess)
                 {
                     response.Data = apiResponse.Id;
                     response.Success = true;
                 }
-
                 return response;
             }
             catch (ApiException ex)
@@ -61,7 +73,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services
             try
             {
                 //First we have to Create an instance of MemberEditDTO because the client method needs that
-                EditMemberDto dto=_mapper.Map<EditMemberDto>(vm);
+                EditMemberDto dto = _mapper.Map<EditMemberDto>(vm);
                 await _client.MemberPUTAsync(id.ToString(), dto);
                 return new Response<int>() { Success = true };
             }
@@ -83,7 +95,6 @@ namespace GymManagement.UI.Asp.NetMVC.Services
                 return ConvertApiExecptions<int>(ex);
             }
         }
-
 
 
     }

@@ -7,8 +7,8 @@ namespace GymManagement.UI.Asp.NetMVC.Contracts
     {
         Task<List<MemberVm>> GetMembersAsync();
         Task<MemberVm> GetMemberAsync(int id);
-        Task<Response<int>> CreateMember(CreateMemberVm  vm);
-        Task<Response<int>> UpdateMember(int id,MemberVm  vm);
+        Task<Response<int>> CreateMember(CreateMemberVm vm);
+        Task<Response<int>> UpdateMember(int id, MemberVm vm);
         Task<Response<int>> DeleteMember(int id);
     }
 }
