@@ -1,4 +1,4 @@
-﻿
+﻿@model GymManagement.UI.Asp.NetMVC.Models.MemberVM.MemberVm
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
@@ -24,43 +24,50 @@
             </div>
             <div class="widget-body">
                 <div id="registration-form">
-                    <form role="form">
+                    <form asp-area="Member" asp-controller="Member" asp-action="Edit" method="post" asp-antiforgery="true" enctype="multipart/form-data">
                         <div class="form-title">
                             User Information
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="First Name">
-                                <i class="glyphicon glyphicon-user circular green"></i>
+                                <input type="text" class="form-control" asp-for="FirstName">
+                                <i class="glyphicon glyphicon-user circular yellow"></i>
                             </span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="Last Name">
-                                <i class="fa fa-info green"></i>
+                                <input type="text" class="form-control" placeholder="Last Name" asp-for="LastName">
+                                <i class="fa fa-info azure"></i>
                             </span>
                         </div>
+                            <div class="form-group">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control" placeholder="Last Name" asp-for="Email">
+                                    <i class="fa fa-envelope orange"></i>
+                                </span>
+                            </div>
+                     
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <input type="date" class="form-control" placeholder="Birth Date">
+                                <input type="date" class="form-control" placeholder="Birth Date" asp-for="BirthDate">
                                 <i class="fa fa-calendar blue"></i>
                             </span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <select type="text" class="form-control" asp-items="@ViewBag.Memberships"></select>
-                                <i class="fa fa-bars pink"></i>
+                                <select type="text" class="form-control" asp-for="Membership_Id" asp-items="@ViewBag.Memberships"></select>
+
                             </span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <select type="text" class="form-control" asp-items="@ViewBag.Gender"></select>
-                                <i class="fa fa-bars pink"></i>
+                                <select type="text" class="form-control" asp-for="Gender" asp-items="@ViewBag.Gender"></select>
+
                             </span>
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" class="form-control" asp-for="MobileNumber" placeholder="Phone">
                                 <i class="fa fa-mobile purple"></i>
                             </span>
                         </div>
@@ -74,7 +81,7 @@
 
     </div>
     <div class="col-lg-3 col-sm-3 col-xs-3">
-        <img src="~/Member/assets/img/avatars/Free_user.png" style="max-width: 350px;max-height: 350px;margin-top: 3%" />
+        <img src="~/Img/@Model.Avatar" style="max-width: 350px;max-height: 350px;margin-top: 3%" />
     </div>
 </div>
 

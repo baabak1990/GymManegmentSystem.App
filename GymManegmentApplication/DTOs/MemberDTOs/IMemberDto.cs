@@ -12,7 +12,7 @@ public interface IMemberDto
     public int Membership_Id { get; set; }
     public bool IsValid { get; set; }
     public bool IsPresent { get; set; }
-    public string  Avatar { get; set; }
+    public string?  Avatar { get; set; }
     public Gender Gender { get; set; }
     public string? Instagram { get; set; }
     public string? Telegram { get; set; }

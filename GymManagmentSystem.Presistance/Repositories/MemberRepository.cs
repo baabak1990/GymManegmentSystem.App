@@ -25,8 +25,7 @@ namespace GymManagmentSystem.Presistance.Repositories
         {
             try
             {
-               var result= await _context.Set<Member>().Include(c => c.MemberShip)
-                    .FirstOrDefaultAsync(c => c.Id == id);
+               var result= await _context.Set<Member>().FirstOrDefaultAsync(m=>m.Id==id);
                if (result == null)
                {
                    throw new Exception("Something Went wrong !!!");

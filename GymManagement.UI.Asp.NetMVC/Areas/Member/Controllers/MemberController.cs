@@ -113,7 +113,8 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         }
 
         // GET: MemberController/Edit/5
-        public async Task<ActionResult> Edit(int id)
+       
+       public async Task<ActionResult> Edit(int id)
         {
             #region SelectlistItems
 
