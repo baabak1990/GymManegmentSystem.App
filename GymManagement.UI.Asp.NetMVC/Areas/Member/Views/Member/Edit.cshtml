@@ -48,7 +48,13 @@
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="Membership Type">
+                                <select type="text" class="form-control" asp-items="@ViewBag.Memberships"></select>
+                                <i class="fa fa-bars pink"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon icon-right">
+                                <select type="text" class="form-control" asp-items="@ViewBag.Gender"></select>
                                 <i class="fa fa-bars pink"></i>
                             </span>
                         </div>

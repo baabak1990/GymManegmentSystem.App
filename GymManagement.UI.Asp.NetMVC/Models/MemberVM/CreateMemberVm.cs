@@ -29,6 +29,17 @@ namespace GymManagement.UI.Asp.NetMVC.Models.MemberVM
 
         public bool IsPresent { get; set; }
         public bool IsValid { get; set; }
+        public string? Instagram { get; set; }
+        public string? Telegram { get; set; }
+        public string? Facebook { get; set; }
+        public string? TikTok { get; set; }
+        public string? X { get; set; }
+        [EmailAddress(ErrorMessage = "Please Use Correct Format of Email Address .Exp :example@gym.com")]
+        public string? Email { get; set; }
+        public string? Address { get; set; }
+
+        [MaxLength(700,ErrorMessage = "Please use lesser than 700 characters !!!")]
+        public string? Brief { get; set; }
     }
 
     public class MemberVm : CreateMemberVm

@@ -44,6 +44,7 @@ namespace GymManagement.UI.Asp.NetMVC.Services
                 // Our return type in command feature is baseCommandResponse
                 var response = new Response<int>();
                 CreateMemberDto dto = _mapper.Map<CreateMemberDto>(vm);
+                dto.Email = vm.Email.ToLower();
                 if (vm.Gender == Gender.Female)
                 {
                     dto.Avatar = "2.jpg";

@@ -19,5 +19,13 @@ namespace GymManegmentApplication.DTOs.MemberDTOs
         public bool IsPresent { get; set; }
         public string? Avatar { get; set; }
         public Gender Gender { get; set; }
+        public string? Instagram { get; set; }
+        public string? Telegram { get; set; }
+        public string? Facebook { get; set; }
+        public string? TikTok { get; set; }
+        public string? X { get; set; }
+        public string? Email { get; set; }
+        public string? Address { get; set; }
+        public string? Brief { get; set; }
     }
 }

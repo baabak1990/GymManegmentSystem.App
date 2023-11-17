@@ -1,4 +1,6 @@
-﻿@model GymManagement.UI.Asp.NetMVC.Models.MemberVM.MemberVm
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using GymManagement.UI.Asp.NetMVC.Models.MemberVM
+@model GymManagement.UI.Asp.NetMVC.Models.MemberVM.MemberVm
 @{
     ViewData["Title"] = "Details of " + @Model.FirstName + " " + @Model.LastName;
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
@@ -14,89 +16,171 @@
     </ul>
 </div>
 
-<div class="row">
-    <div class="col-lg-8 col-sm-8 col-xs-12" style="margin-top: 1%;margin-left: 1%">
-        <div class="widget flat radius-bordered">
-            <div class="widget-header bg-blue">
-                <span class="widget-caption">Registration Form</span>
-            </div>
-            <div class="widget-body">
-                <div id="registration-form">
-
-                    <div class="form-title">
-                        User Information
+<div class="page-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="profile-container">
+                <div class="profile-header row">
+                    <div class="col-lg-2 col-md-4 col-sm-12 text-center">
+                        <img src="~/img/@Model.Avatar" alt="" class="header-avatar">
                     </div>
-                    <input asp-for="Avatar" type="hidden" />
-                    <div class="form-group">
-                        <span class="input-icon icon-right">
-                            <label asp-for="FirstName">First Name :</label>
-                            <br/>
-                            <input type="text" readonly asp-for="FirstName" placeholder="First Name" />
-                            <i class="glyphicon glyphicon-user circular green"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <span class="input-icon icon-right">
-                            <label asp-for="LastName">Last Name :</label>
-                            <br/>
-                            <input type="text" class="form-bordered" readonly asp-for="LastName" placeholder="Last Name" />
-                            <i class="fa fa-info green"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <span class="input-icon icon-right">
-                            <label asp-for="BirthDate">BirthDate :</label>
-                            <br/>
-                            <input type="text" class="form-check" readonly asp-for="BirthDate.Year" placeholder="Birth Data" />
-                            <i class="fa fa-calendar blue"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <span class="input-icon icon-right">
-                            <label asp-for="Membership_Id">MemberShip Type :</label>
-                            <br/>
-                            <input type="text" class="form-check" readonly asp-for="Membership_Id" placeholder="Membership Type" />
-                            <i class="fa fa-bars pink"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <span class="input-icon icon-right">
-                            <label asp-for="MobileNumber">Mobile Number :</label>
-                            <br/>
-                            <input type="text" class="form-check" readonly asp-for="MobileNumber" placeholder="Mobile" />
-                            <i class="fa fa-mobile purple"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
+                    <div class="col-lg-5 col-md-8 col-sm-12 profile-info">
+                        <div class="header-fullname">@Model.FirstName @Model.LastName</div>
                         @{
-                            if (@Model.IsPresent == true)
+                            if (Model.IsPresent)
                             {
-                                <span class="input-icon icon-right">
-                                    <label asp-for="IsPresent">Is He/She Present ? </label>
-                                    <br/>
-                                    <input type="text" class="form-check text green" disable  asp-for="IsPresent" placeholder="Mobile" />
-                                    <i class="fa fa-mobile purple"></i>
-                                </span>
+                                <a href="#" class="btn btn-palegreen btn-sm  btn-follow">
+                                    <i class="fa fa-check"></i>Present
+                                </a>
                             }
                             else
                             {
-                                <span class="input-icon icon-right">
-                                    <label asp-for="IsPresent">Is He/She Present ? </label>
-                                    <br/>
-                                    <input type="text" class="form-check text red" disable asp-for="IsPresent" placeholder="Mobile" />
-                                    <i class="fa fa-mobile purple"></i>
-                                </span>
+                                <a href="#" class="btn btn-danger btn-sm  btn-follow">
+                                    <i class="fa fa-ban"></i>Absent
+                                </a>
                             }
                         }
+                        <div class="header-information">
+                            @Model.Brief
+                        </div>
                     </div>
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 profile-stats">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 stats-col">
+                                <div class="stats-value pink">
+                                    @{
+                                        switch (Model.Membership_Id)
+                                        {
+                                            case 1:
+                                                <p class="text text gold">Golden</p>
+                                                break;
+                                            case 2:
+                                                <p class="text text silver">Silver</p>
+                                                break;
+                                            case 4:
+                                                <p class="text text red">Bronze</p>
+                                                break;
+                                            case 6:
+                                                <p class="text text text-black">Daily</p>
+                                                break;
+                                        }
+                                    }
+                                </div>
+                                <div class="stats-title">Membership</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 stats-col">
+                                <div class="stats-value pink">
+                                    @{
+                                        if (Model.Gender == Gender.Female)
+                                        {
+                                            <p class="text pink">Female</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text blue">Male</p>
+                                        }
+                                    }
+                                </div>
+                                <div class="stats-title">Gender</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                                <i class="glyphicon glyphicon-map-marker"></i> @Model.Address
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                                Rate: <strong>$0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <div class="col-lg-12">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs tabs-flat  nav-justified" id="myTab11">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#overview" aria-expanded="true">
+                                        Overview
+                                    </a>
+                                </li>
+                                <li class="tab-palegreen">
+                                    <a data-toggle="tab" id="contacttab" href="#contacts" aria-expanded="false">
+                                        Contacts
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content tabs-flat">
+                                <div id="overview" class="tab-pane active">
+                                    <div class="row profile-overview">
+                                        <div class="col-md-8">
+                                            <h6 class="row-title before-themeprimary no-margin-top">PROFILE VISITS</h6>
+                                            <div id="visit-chart" class="chart" style="padding: 0px; position: relative;">
+                                                <canvas class="flot-base" width="737" height="220" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 737px; height: 220px;"></canvas>
+                                                <div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px; display: block;">
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 65px; text-align: center;">4</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 167px; text-align: center;">6</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 268px; text-align: center;">8</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 367px; text-align: center;">10</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 469px; text-align: center;">12</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 570px; text-align: center;">14</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 205px; left: 672px; text-align: center;">16</div></div
+                                                    ><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px; display: block;">
+                                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 193px; left: 6px; text-align: right;">0</div>
+                                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 154px; left: 6px; text-align: right;">5</div>
+                                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 116px; left: 0px; text-align: right;">10</div
+                                                        ><div class="flot-tick-label tickLabel" style="position: absolute; top: 77px; left: 0px; text-align: right;">15</div>
+                                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 39px; left: 0px; text-align: right;">20</div>
+                                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">25</div></div></div>
+                                                        <canvas class="flot-overlay" width="737" height="220" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 737px; height: 220px;"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="contacts" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="profile-contacts">
 
+                                                <div class="profile-badge orange"><i class="fa fa-phone orange"></i><span>Contacts</span></div>
+                                                <div class="contact-info">
+                                                    <p>
+                                                        Phone	: @Model.MobileNumber <br>
+                                                    </p>
+                                                    <p>
+                                                        Email		: @Model.Email
+                                                        <br>
+                                                        Instagram : @Model.Instagram
+                                                    </p>
+                                                    <p>
+                                                        Facebook	: @Model.Facebook
+                                                        <br>
+                                                        X	: @Model.X
+                                                        <br />
+                                                        Telegram: @Model.Telegram
+                                                    </p>
+                                                </div>
+                                                <div class="profile-badge azure">
+                                                    <i class="fa fa-map-marker azure"></i><span>Location</span>
+                                                </div>
+                                                <div class="contact-info">
+                                                    <p>
+                                                        Address : <br>
+                                                        @Model.Address<br>
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img alt="" class="image-circular" src="Img/@Model.Avatar"><div style="height: 100%; width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="col-lg-3 col-sm-3 col-xs-3">
-        <img src="~/img/@Model.Avatar" style="max-width: 350px;max-height: 350px;margin-top: 3%" />
     </div>
 </div>
-

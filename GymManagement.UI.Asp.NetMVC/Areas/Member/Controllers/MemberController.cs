@@ -27,6 +27,7 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         // GET: MemberController/Details/5
         public async Task<ActionResult> Details(int id)
         {
+           
             var member = await _services.GetMemberAsync(id);
             if (member == null)
             {
@@ -40,6 +41,8 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            #region SelectlistItems
+
             List<SelectListItem> memberships = new List<SelectListItem>()
             {
                 new SelectListItem("Select your Membership type", ""),
@@ -56,8 +59,11 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
                 new SelectListItem("Female", "2"),
                 new SelectListItem("Rather not to say", "3"),
             };
-            ViewBag.Memberships = memberships;
             ViewBag.Gender = gender;
+            ViewBag.Memberships = memberships;
+
+            #endregion
+
             return View();
         }
 
@@ -96,7 +102,7 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
                 {
                     return RedirectToAction(nameof(Index));
                 }
-
+                //Send Sms And Email
                 ModelState.AddModelError("", response.ValidationError);
             }
             catch(Exception ex)
@@ -107,9 +113,33 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         }
 
         // GET: MemberController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            #region SelectlistItems
+
+            List<SelectListItem> memberships = new List<SelectListItem>()
+            {
+                new SelectListItem("Select your Membership type", ""),
+                new SelectListItem("Gold", "1"),
+                new SelectListItem("Silver", "2"),
+                new SelectListItem("Bronze", "4"),
+                new SelectListItem("Daily", "6")
+
+            };
+            List<SelectListItem> gender = new List<SelectListItem>()
+            {
+                new SelectListItem("Please select your gender", ""),
+                new SelectListItem("Male", "1"),
+                new SelectListItem("Female", "2"),
+                new SelectListItem("Rather not to say", "3"),
+            };
+            ViewBag.Gender = gender;
+            ViewBag.Memberships = memberships;
+
+            #endregion
+
+            var member = await _services.GetMemberAsync(id);
+            return View(member);
         }
 
         // POST: MemberController/Edit/5
@@ -117,8 +147,32 @@ namespace GymManagement.UI.Asp.NetMVC.Areas.Member.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
+            #region SelectlistItems
+
+            List<SelectListItem> memberships = new List<SelectListItem>()
+            {
+                new SelectListItem("Select your Membership type", ""),
+                new SelectListItem("Gold", "1"),
+                new SelectListItem("Silver", "2"),
+                new SelectListItem("Bronze", "4"),
+                new SelectListItem("Daily", "6")
+
+            };
+            List<SelectListItem> gender = new List<SelectListItem>()
+            {
+                new SelectListItem("Please select your gender", ""),
+                new SelectListItem("Male", "1"),
+                new SelectListItem("Female", "2"),
+                new SelectListItem("Rather not to say", "3"),
+            };
+            ViewBag.Gender = gender;
+            ViewBag.Memberships = memberships;
+
+            #endregion
+
             try
             {
+
                 return RedirectToAction(nameof(Index));
             }
             catch

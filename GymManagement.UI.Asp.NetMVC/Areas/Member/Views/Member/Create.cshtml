@@ -44,6 +44,13 @@
                         </div>
                         <div class="form-group">
                             <span class="input-icon icon-right">
+                                <input type="text" class="form-control" placeholder="Email Address" asp-for="Email">
+                                <i class="fa fa-info green"></i>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon icon-right">
                                 <select type="text" class="form-control" placeholder="Last Name" asp-for="Gender" asp-items="ViewBag.Gender"></select>
                                 <i class="fa fa-info green"></i>
                             </span>

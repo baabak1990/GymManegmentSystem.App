@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 using GymManegmentApplication.Contracts.Presistance;
+using GymManegmentApplication.Model;
 
 namespace GymManegmentApplication.DTOs.MemberDTOs.Validation
 {
@@ -42,8 +43,17 @@ namespace GymManegmentApplication.DTOs.MemberDTOs.Validation
                 })
                 .WithMessage("MobileNumber is not valid");
             ;
+            RuleFor(m => m.Email)
+                .EmailAddress().WithMessage("Please Use Correct Email Address Format")
+                .MustAsync(async (mail, id) =>
+                {
+                    var exist = _memberRepository.IsUserExistedByEmail(mail);
+                    return !exist;
+                })
+                 .WithMessage("Email is not valid");
 
-
+            RuleFor(m => m.Brief)
+                .MaximumLength(700).WithMessage("Please use lesser than 700 characters !!!");
             //RuleFor(m => m.Membership_Id)
             //    .GreaterThan(0)
             //    .MustAsync(async (id, token) =>
